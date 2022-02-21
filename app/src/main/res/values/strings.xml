@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">RecommendationLetters</string>
+    <string name="app_name">Recommendation Letters</string>
+    <string name="header">Login Page</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="not_registered">Not registered yet?</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="registration_page">Registration Page</string>
+    <string name="reg_email">E-mail</string>
+    <string name="reg_passwd">Password</string>
+    <string name="conf_passwd">Confirm password</string>
+    <string name="reg_signup">SIGN UP</string>
 </resources>
