@@ -2,6 +2,7 @@ package com.example.recommendationletters;
 
 public class StudentData {
     String full_name, registration_nr;
+    float total_average;
 
     public StudentData(){};
 
@@ -19,5 +20,13 @@ public class StudentData {
 
     public void setRegistration_nr(String registration_nr) {
         this.registration_nr = registration_nr;
+    }
+
+    public float getTotal_average() {
+        return total_average;
+    }
+
+    public void setTotal_average(float total_average) {
+        this.total_average = total_average;
     }
 }

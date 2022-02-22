@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="109dp"
         android:orientation="vertical">
 
         <TextView
@@ -28,17 +28,38 @@
             android:id="@+id/reg_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="165dp"
             android:layout_marginTop="40dp"
-            android:text="registration_number"
+            android:text="reg_nr"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/reg_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="200dp"
+            android:text="Registration Number: "
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/average"
-            android:layout_width="382dp"
-            android:layout_height="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
             android:layout_marginTop="65dp"
-            android:textSize="17sp"
-            android:visibility="invisible" />
+            android:text="total_average"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/average_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:layout_marginRight="320dp"
+            android:text="Average: "
+            android:textSize="17sp" />
+
 
     </RelativeLayout>
 
