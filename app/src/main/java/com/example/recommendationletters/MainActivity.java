@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(getApplicationContext(), "LOGIN SUCCESSFUL", Toast.LENGTH_LONG).show();
+                    // redirect professor to the activity where he can see the list of available students
+                    Intent intent = new Intent(MainActivity.this, Students.class);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "LOGIN FAILED\n" + task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();

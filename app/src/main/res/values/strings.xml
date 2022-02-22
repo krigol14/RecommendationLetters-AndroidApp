@@ -11,4 +11,5 @@
     <string name="reg_passwd">Password</string>
     <string name="conf_passwd">Confirm password</string>
     <string name="reg_signup">SIGN UP</string>
+    <string name="students">Students</string>
 </resources>
