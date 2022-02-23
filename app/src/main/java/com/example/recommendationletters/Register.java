@@ -1,9 +1,12 @@
 package com.example.recommendationletters;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +25,12 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        // change the action bar's color
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#284b63"));
+        assert actionBar != null;
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         mAuth = FirebaseAuth.getInstance();
         register_email = findViewById(R.id.register_email);

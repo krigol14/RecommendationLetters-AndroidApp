@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="109dp"
+        android:layout_height="710dp"
         android:orientation="vertical">
 
         <TextView
@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/reg_number"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="165dp"
             android:layout_marginTop="40dp"
@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/reg_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginRight="200dp"
@@ -60,6 +60,175 @@
             android:text="Average: "
             android:textSize="17sp" />
 
+        <TextView
+            android:id="@+id/lesson1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="105dp"
+            android:text="lesson1"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="105dp"
+            android:text="grade1"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
+            android:text="lesson2"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="130dp"
+            android:text="grade2"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="155dp"
+            android:text="lesson3"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="155dp"
+            android:text="grade3"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:text="lesson4"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="180dp"
+            android:text="grade4"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="205dp"
+            android:text="lesson5"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="205dp"
+            android:text="grade5"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:text="lesson6"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="230dp"
+            android:text="grade6"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="255dp"
+            android:text="lesson7"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="255dp"
+            android:text="grade7"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="280dp"
+            android:text="lesson8"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="280dp"
+            android:text="grade8"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="305dp"
+            android:text="lesson9"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="305dp"
+            android:text="grade9"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="330dp"
+            android:text="lesson10"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/grade10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="330dp"
+            android:text="grade10"
+            android:textSize="17sp" />
 
     </RelativeLayout>
 
