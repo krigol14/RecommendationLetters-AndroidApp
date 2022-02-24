@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -76,19 +77,19 @@ public class StudentDetails extends AppCompatActivity {
                     lesson_names.add(lesson_name);
                 }
 
-                // set each lesson to its corresponding textView
-                for (int i = 0; i < 10; i ++){
-                    ((TextView) findViewById(lessons_textViews[i])).setText(lesson_names.get(i));
-                }
-
                 // for each lesson find its grade and set it to the corresponding textView
                 for (int i = 0; i < 10; i++){
+                    // set each lesson to its corresponding textView
+                    ((TextView) findViewById(lessons_textViews[i])).setText(lesson_names.get(i));
+
                     int j = i;
                     reference.child(registration_nr).child("lessons").child(lesson_names.get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @SuppressLint("SetTextI18n")
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             int lesson_grade = snapshot.getValue(Integer.class);
                             ((TextView) findViewById(grades_textViews[j])).setText(String.valueOf(lesson_grade));
+                            // ((TextView) findViewById(lessons_textViews[j])).setText(lesson_names.get(j) + ": " + String.valueOf(lesson_grade));
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {}
