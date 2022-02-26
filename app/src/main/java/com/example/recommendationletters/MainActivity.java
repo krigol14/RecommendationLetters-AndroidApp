@@ -59,9 +59,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // function for user's registration
-    public void signUp(View view)
-    {
+    public void signUp(View view) {
         // if the user presses the button redirect him to the registration page
         startActivity(new Intent(MainActivity.this, Register.class));
+    }
+
+    public void requirements(View view) {
+        startActivity(new Intent(MainActivity.this, Requirements.class));
     }
 }
