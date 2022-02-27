@@ -46,7 +46,7 @@ public class LuminanceActivity extends AppCompatActivity implements SensorEventL
 
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
-            luminance.setText("Luminance is: " + event.values[0]);
+            luminance.setText("Current luminance level: " + event.values[0] + " lx");
         }
     }
 
