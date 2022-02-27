@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -99,5 +100,10 @@ public class StudentDetails extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
+    }
+
+    public void showPrototypes(View view) {
+        // redirect professor to the activity which displays some recommendation letter prototypes
+        startActivity(new Intent(StudentDetails.this, RecommendationLetterPrototypes.class));
     }
 }

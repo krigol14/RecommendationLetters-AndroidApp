@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecommendationLetters">
         <activity
+            android:name=".RecommendationLetterPrototypes"
+            android:exported="false" />
+        <activity
             android:name=".LuminanceActivity"
             android:exported="false" />
 
