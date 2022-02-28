@@ -28,7 +28,6 @@ public class StudentsAdapter extends FirebaseRecyclerAdapter<StudentData, Studen
             super(itemView);
             name = itemView.findViewById(R.id.full_name);
             number = itemView.findViewById(R.id.reg_number);
-            average = itemView.findViewById(R.id.average);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -38,7 +37,6 @@ public class StudentsAdapter extends FirebaseRecyclerAdapter<StudentData, Studen
                     // pass the data of the specific student clicked to the new StudentDetails activity
                     details.putExtra("full_name", name.getText());
                     details.putExtra("number", number.getText());
-                    details.putExtra("average", average.getText());
 
                     view.getContext().startActivity(details);
                 }
@@ -51,8 +49,6 @@ public class StudentsAdapter extends FirebaseRecyclerAdapter<StudentData, Studen
     protected void onBindViewHolder(@NonNull studentsViewHolder holder, int position, @NonNull StudentData model) {
         holder.name.setText(model.getFull_name());
         holder.number.setText(model.getRegistration_nr());
-        // invisible field - needed in the student details activity
-        holder.average.setText(String.valueOf(model.getTotal_average()));
     }
 
     // function to tell the class about the layout/student.xml file, in which the data will be shown

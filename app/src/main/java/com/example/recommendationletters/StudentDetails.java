@@ -57,19 +57,19 @@ public class StudentDetails extends AppCompatActivity {
         Intent details = getIntent();
         String name = details.getStringExtra("full_name");
         String registration_nr = details.getStringExtra("number");
-        String average = details.getStringExtra("average");
 
         // display the student's details
         d_name.setText(name);
         d_reg.setText(registration_nr);
-        d_avg.setText(average);
 
         int[] lessons_textViews = {R.id.lesson1, R.id.lesson2, R.id.lesson3, R.id.lesson4, R.id.lesson5, R.id.lesson6, R.id.lesson7, R.id.lesson8, R.id.lesson9, R.id.lesson10};
         int[] grades_textViews = {R.id.grade1, R.id.grade2, R.id.grade3, R.id.grade4, R.id.grade5, R.id.grade6, R.id.grade7, R.id.grade8, R.id.grade9, R.id.grade10};
         List<String> lesson_names = new ArrayList<>();
+        List<Integer> lesson_grades = new ArrayList<>();
 
         // retrieve the student's lessons along with his grades for each one
         reference.child(registration_nr).child("lessons").addValueEventListener(new ValueEventListener() {
+            int grades_total;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dsp : snapshot.getChildren()){
@@ -78,7 +78,7 @@ public class StudentDetails extends AppCompatActivity {
                     lesson_names.add(lesson_name);
                 }
 
-                // for each lesson find its grade and set it to the corresponding textView
+                // for each lesson find its grade
                 for (int i = 0; i < 10; i++){
                     // set each lesson to its corresponding textView
                     ((TextView) findViewById(lessons_textViews[i])).setText(lesson_names.get(i));
@@ -89,8 +89,14 @@ public class StudentDetails extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             int lesson_grade = snapshot.getValue(Integer.class);
+
+                            // calculate student's average and set it to its textView
+                            lesson_grades.add(lesson_grade);
+                            grades_total += lesson_grades.get(j);
+                            d_avg.setText(String.valueOf((float)grades_total / 10));
+
+                            // set lesson grade to its corresponding textview
                             ((TextView) findViewById(grades_textViews[j])).setText(String.valueOf(lesson_grade));
-                            // ((TextView) findViewById(lessons_textViews[j])).setText(lesson_names.get(j) + ": " + String.valueOf(lesson_grade));
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {}
