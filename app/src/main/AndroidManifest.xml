@@ -15,9 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecommendationLetters">
-        <activity
-            android:name=".Sign"
-            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAky7sh7Y9ozrOQ8yIk_ygspXY-Eo3rHd0" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".ViewPdf"
             android:exported="false" />
@@ -27,14 +32,6 @@
         <activity
             android:name=".LuminanceActivity"
             android:exported="false" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAky7sh7Y9ozrOQ8yIk_ygspXY-Eo3rHd0" />
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
         <activity
             android:name=".MapsActivity"
             android:exported="false" />

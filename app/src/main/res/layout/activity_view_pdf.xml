@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewPdf"
-    android:orientation="vertical">
+    android:background="#f5ecfe"
+    tools:context=".ViewPdf">
 
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/abc"
-        android:layout_width="match_parent"
-        android:layout_height="598dp" />
+    <RelativeLayout
+        android:id="@+id/signpdf"
+        android:layout_width="406dp"
+        android:layout_height="509dp"
+        android:background="#ffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/abc"
+            android:layout_width="match_parent"
+            android:layout_height="510dp" />
+    </RelativeLayout>
 
     <Button
-        android:id="@+id/sign"
-        android:layout_width="100dp"
+        android:id="@+id/save_sign"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="-30dp"
-        android:text="sign" />
+        android:text="sign"
+        app:layout_constraintBottom_toTopOf="@+id/grant"
+        app:layout_constraintTop_toBottomOf="@+id/signpdf"
+        app:layout_constraintVertical_bias="0.875"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/grant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="230dp"
-        android:layout_marginTop="-48dp"
-        android:text="grant" />
-
-</LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginBottom="16dp"
+        android:text="grant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
