@@ -21,7 +21,7 @@ public class StudentsAdapter extends FirebaseRecyclerAdapter<StudentData, Studen
     }
 
     static class studentsViewHolder extends RecyclerView.ViewHolder {
-        TextView name, number, average;
+        TextView name, number;
 
         // constructor
         public studentsViewHolder(@NonNull View itemView) {

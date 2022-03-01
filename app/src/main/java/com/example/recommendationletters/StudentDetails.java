@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -111,5 +112,15 @@ public class StudentDetails extends AppCompatActivity {
     public void showPrototypes(View view) {
         // redirect professor to the activity which displays some recommendation letter prototypes
         startActivity(new Intent(StudentDetails.this, RecommendationLetterPrototypes.class));
+    }
+
+    // when the user presses the back button redirect to the students list activity
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(StudentDetails.this, Students.class));
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
