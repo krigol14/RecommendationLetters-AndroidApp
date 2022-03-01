@@ -1,22 +1,13 @@
 package com.example.recommendationletters;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -39,6 +30,7 @@ public class Sign extends AppCompatActivity {
                 parent.setDrawingCacheEnabled(true);
                 Bitmap bmp = parent.getDrawingCache();
 
+                // save the signature in png format in Device File Explorer data/data/com.example.recommendationLetters/files/signature.png
                 try {
                     FileOutputStream fos = openFileOutput("signature.png", Context.MODE_PRIVATE);
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
