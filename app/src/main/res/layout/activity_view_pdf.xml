@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f5ecfe"
+    android:background="#D9D9D9"
     tools:context=".ViewPdf">
 
     <RelativeLayout
@@ -26,17 +26,19 @@
         android:id="@+id/save_sign"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#3C6E71"
         android:text="sign"
         app:layout_constraintBottom_toTopOf="@+id/grant"
         app:layout_constraintTop_toBottomOf="@+id/signpdf"
-        app:layout_constraintVertical_bias="0.875"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.871"
+        tools:layout_editor_absoluteX="3dp" />
 
     <Button
         android:id="@+id/grant"
         android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="#3C6E71"
         android:text="grant"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />

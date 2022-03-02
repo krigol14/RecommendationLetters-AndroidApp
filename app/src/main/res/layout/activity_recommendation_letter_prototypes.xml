@@ -6,25 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".RecommendationLetterPrototypes">
 
+    <Button
+        android:id="@+id/choose6_8"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:text="CHOOSE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grade6_8" />
+
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/grade6_8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="134dp"
-        android:text="Recommendation letter prototypes"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="68dp"
+        android:text="GRADE 6-8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/choose8_9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="CHOOSE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grade8_9" />
+
+    <TextView
+        android:id="@+id/grade8_9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="92dp"
+        android:text="GRADE 8-9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/choose6_8" />
+
+    <Button
+        android:id="@+id/choose9_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:text="CHOOSE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/grade9_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="95dp"
+        android:text="GRADE 9-10"
+        app:layout_constraintBottom_toTopOf="@+id/choose9_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choose8_9"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
