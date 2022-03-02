@@ -9,8 +9,8 @@
 
     <RelativeLayout
         android:id="@+id/signpdf"
-        android:layout_width="414dp"
-        android:layout_height="612dp"
+        android:layout_width="407dp"
+        android:layout_height="491dp"
         android:background="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
 
         <com.github.barteksc.pdfviewer.PDFView
             android:id="@+id/abc"
-            android:layout_width="413dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </RelativeLayout>
 

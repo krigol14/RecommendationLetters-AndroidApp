@@ -1,22 +1,36 @@
 package com.example.recommendationletters;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.github.barteksc.pdfviewer.PDFView;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,11 +43,13 @@ public class ViewPdf extends AppCompatActivity {
     ProgressDialog dialog;
     Button grant;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pdf);
         pdfView = findViewById(R.id.abc);
+        grant = findViewById(R.id.grant);
 
         RelativeLayout parent = (RelativeLayout) findViewById(R.id.signpdf);
         MyDrawView myDrawView = new MyDrawView(this);
@@ -44,8 +60,6 @@ public class ViewPdf extends AppCompatActivity {
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#284b63"));
         assert actionBar != null;
         actionBar.setBackgroundDrawable(colorDrawable);
-
-        grant = findViewById(R.id.grant);
 
         // show progress while loading the pdf file
         dialog = new ProgressDialog(this);
@@ -64,7 +78,7 @@ public class ViewPdf extends AppCompatActivity {
 
                 // save the signature in .png format in Device File Explorer data/data/com.example.recommendationLetters/files/signature.png
                 try {
-                    FileOutputStream fos = openFileOutput("idea_signature.png", Context.MODE_PRIVATE);
+                    FileOutputStream fos = openFileOutput("signature.png", Context.MODE_PRIVATE);
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
                     bmp.compress(Bitmap.CompressFormat.PNG, 100 , bos);
                     byte[] bitmapdata = bos.toByteArray();
@@ -75,6 +89,23 @@ public class ViewPdf extends AppCompatActivity {
                 catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                // push the saved pdf with its signature in firebase storage
+                StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("granted_pdfs");
+                Uri file = Uri.fromFile(new File("data/data/com.example.recommendationletters/files/signature.png"));
+                UploadTask uploadTask = storageReference.child("random").putFile(file);
+
+                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uriTask.isComplete());
+                        Uri uri = uriTask.getResult();
+
+                        // uri.toString() is the download url of the uploaded png
+                        // save this link to the specific students child branch in firebase
+                    }
+                });
             }
         });
     }
