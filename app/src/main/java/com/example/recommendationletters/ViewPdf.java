@@ -27,7 +27,7 @@ public class ViewPdf extends AppCompatActivity {
     String urls;
     PDFView pdfView;
     ProgressDialog dialog;
-    Button grant, save;
+    Button grant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,6 @@ public class ViewPdf extends AppCompatActivity {
         actionBar.setBackgroundDrawable(colorDrawable);
 
         grant = findViewById(R.id.grant);
-        save = findViewById(R.id.save_sign);
 
         // show progress while loading the pdf file
         dialog = new ProgressDialog(this);
@@ -57,7 +56,7 @@ public class ViewPdf extends AppCompatActivity {
         urls = getIntent().getStringExtra("url");
         new RetrievePdfStream().execute(urls);
 
-        save.setOnClickListener(new View.OnClickListener() {
+        grant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 parent.setDrawingCacheEnabled(true);

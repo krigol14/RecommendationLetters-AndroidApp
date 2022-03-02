@@ -9,8 +9,8 @@
 
     <RelativeLayout
         android:id="@+id/signpdf"
-        android:layout_width="415dp"
-        android:layout_height="541dp"
+        android:layout_width="414dp"
+        android:layout_height="612dp"
         android:background="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,27 +18,17 @@
 
         <com.github.barteksc.pdfviewer.PDFView
             android:id="@+id/abc"
-            android:layout_width="match_parent"
+            android:layout_width="413dp"
             android:layout_height="match_parent" />
     </RelativeLayout>
-
-    <Button
-        android:id="@+id/save_sign"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:backgroundTint="#3C6E71"
-        android:text="sign"
-        app:layout_constraintBottom_toTopOf="@+id/grant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Draw your signature and press SIGN or just press GRANT if you don't want to sign the document"
-        app:layout_constraintBottom_toTopOf="@+id/save_sign"
+        android:text="Draw your signature and press GRANT in order to send the recommendation letter or just press GRANT if you don't want to sign the document"
+        app:layout_constraintBottom_toTopOf="@+id/grant"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
