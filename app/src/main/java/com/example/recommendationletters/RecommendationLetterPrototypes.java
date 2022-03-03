@@ -41,6 +41,10 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setBackgroundDrawable(colorDrawable);
 
+        Intent prototypes = getIntent();
+        String registration_nr = prototypes.getStringExtra("number");
+        Log.e("prototypes", registration_nr);
+
         // grades 6-8
         choose6_8.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +58,7 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
                         pdf_url6_8 = dataSnapshot.getValue(String.class);
 
                         // show alert dialog regrading professor's options with the specific pdf
-                        alertDialog(pdf_url6_8);
+                        alertDialog(pdf_url6_8, registration_nr);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -77,7 +81,7 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
                         pdf_url8_9 = dataSnapshot.getValue(String.class);
 
                         // show alert dialog regrading professor's options with the specific pdf
-                        alertDialog(pdf_url8_9);
+                        alertDialog(pdf_url8_9, registration_nr);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -100,7 +104,7 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
                         pdf_url9_10 = dataSnapshot.getValue(String.class);
 
                         // show alert dialog regrading professor's options with the specific pdf
-                        alertDialog(pdf_url9_10);
+                        alertDialog(pdf_url9_10, registration_nr);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -112,7 +116,7 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
     }
 
     // function which builds an alert dialog with the options the professor has after choosing the specific pdf
-    public void alertDialog(String pdf_url) {
+    public void alertDialog(String pdf_url, String registration_nr) {
         // build alert dialog
         CharSequence options[] = new CharSequence[]{
                 "Download",
@@ -134,6 +138,7 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
                 if (which == 1) {
                     Intent intent = new Intent(RecommendationLetterPrototypes.this, ViewPdf.class);
                     intent.putExtra("url", pdf_url);
+                    intent.putExtra("number", registration_nr);
                     startActivity(intent);
                 }
             }

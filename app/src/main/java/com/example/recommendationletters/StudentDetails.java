@@ -35,6 +35,7 @@ public class StudentDetails extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     TextView d_name, d_reg, d_avg;
+    Button grant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +54,21 @@ public class StudentDetails extends AppCompatActivity {
         d_name = findViewById(R.id.full_name);
         d_reg = findViewById(R.id.reg_number);
         d_avg = findViewById(R.id.average);
+        grant = findViewById(R.id.grantRecLetter);
 
         // get the data of the student the user pressed, passed from the StudentsAdapter class
         Intent details = getIntent();
         String name = details.getStringExtra("full_name");
         String registration_nr = details.getStringExtra("number");
+
+        grant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent prototypes = new Intent(view.getContext(), RecommendationLetterPrototypes.class);
+                prototypes.putExtra("number", registration_nr);
+                view.getContext().startActivity(prototypes);
+            }
+        });
 
         // display the student's details
         d_name.setText(name);

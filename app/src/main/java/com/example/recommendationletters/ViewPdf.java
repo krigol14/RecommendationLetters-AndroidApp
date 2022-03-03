@@ -40,7 +40,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ViewPdf extends AppCompatActivity {
-    String urls;
+    String urls, registration_nr;
     PDFView pdfView;
     ProgressDialog dialog;
     Button grant;
@@ -70,6 +70,8 @@ public class ViewPdf extends AppCompatActivity {
 
         // get the url of the pdf
         urls = getIntent().getStringExtra("url");
+        registration_nr = getIntent().getStringExtra("number");
+        Log.e("ViewPdf", registration_nr);
         new RetrievePdfStream().execute(urls);
 
         grant.setOnClickListener(new View.OnClickListener() {
@@ -93,12 +95,12 @@ public class ViewPdf extends AppCompatActivity {
                 }
 
                 // push the saved pdf with its signature in firebase storage
-                StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("granted_pdfs");
+                StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("granted_recLetters");
                 Uri file = Uri.fromFile(new File("data/data/com.example.recommendationletters/files/signature.png"));
-                UploadTask uploadTask = storageReference.child("random").putFile(file);
+                UploadTask uploadTask = storageReference.child("recLetter" + System.currentTimeMillis() + ".png").putFile(file);
 
                 // push the url of the pdf in realtime database
-                database = FirebaseDatabase.getInstance().getReference().child("Students").child("P18074").child("RecLetters");
+                database = FirebaseDatabase.getInstance().getReference().child("Students").child(registration_nr).child("RecLetters");
                 uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
