@@ -18,7 +18,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -45,6 +47,8 @@ public class ViewPdf extends AppCompatActivity {
     ProgressDialog dialog;
     Button grant;
     DatabaseReference database;
+    EditText date, profName, stdName;
+    TextView dateText, profNameText, stdNameText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,12 @@ public class ViewPdf extends AppCompatActivity {
         setContentView(R.layout.activity_view_pdf);
         pdfView = findViewById(R.id.abc);
         grant = findViewById(R.id.grant);
+        date = findViewById(R.id.dateEdit);
+        profName = findViewById(R.id.professorName);
+        stdName = findViewById(R.id.studentName);
+        dateText = findViewById(R.id.date);
+        profNameText = findViewById(R.id.student_name);
+        stdNameText = findViewById(R.id.professor_name);
 
         RelativeLayout parent = (RelativeLayout) findViewById(R.id.signpdf);
         MyDrawView myDrawView = new MyDrawView(this);
@@ -77,6 +87,15 @@ public class ViewPdf extends AppCompatActivity {
         grant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // set details in the pdf document
+                String dateInput = date.getText().toString();
+                String professor_name = profName.getText().toString();
+                String student_name = stdName.getText().toString();
+
+                dateText.setText(dateInput);
+                profNameText.setText(professor_name);
+                stdNameText.setText(student_name);
+
                 parent.setDrawingCacheEnabled(true);
                 Bitmap bmp = parent.getDrawingCache();
 
