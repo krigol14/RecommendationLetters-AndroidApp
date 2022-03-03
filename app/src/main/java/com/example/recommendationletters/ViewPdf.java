@@ -24,6 +24,8 @@ import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -42,7 +44,7 @@ public class ViewPdf extends AppCompatActivity {
     PDFView pdfView;
     ProgressDialog dialog;
     Button grant;
-
+    DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +97,8 @@ public class ViewPdf extends AppCompatActivity {
                 Uri file = Uri.fromFile(new File("data/data/com.example.recommendationletters/files/signature.png"));
                 UploadTask uploadTask = storageReference.child("random").putFile(file);
 
+                // push the url of the pdf in realtime database
+                database = FirebaseDatabase.getInstance().getReference().child("Students").child("P18074").child("RecLetters");
                 uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -102,8 +106,8 @@ public class ViewPdf extends AppCompatActivity {
                         while (!uriTask.isComplete());
                         Uri uri = uriTask.getResult();
 
-                        // uri.toString() is the download url of the uploaded png
-                        // save this link to the specific students child branch in firebase
+                        String pdf_url  = uri.toString();
+                        database.child(database.push().getKey()).setValue(pdf_url);
                     }
                 });
             }
