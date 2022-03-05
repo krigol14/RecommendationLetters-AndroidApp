@@ -66,6 +66,7 @@ public class StudentDetails extends AppCompatActivity {
             public void onClick(View view) {
                 Intent prototypes = new Intent(view.getContext(), RecommendationLetterPrototypes.class);
                 prototypes.putExtra("number", registration_nr);
+                prototypes.putExtra("name", name);
                 view.getContext().startActivity(prototypes);
             }
         });

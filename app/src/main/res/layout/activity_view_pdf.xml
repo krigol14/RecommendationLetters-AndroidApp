@@ -22,93 +22,109 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/dt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="420dp"
-                android:text="DATE" />
+                android:text="Date: "
+                android:textColor="@color/black"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="420dp"
+                android:text="DATE"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/std"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="435dp"
+                android:text="Student name: "
+                android:textColor="@color/black"
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/student_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="435dp"
+                android:text="STUDENT NAME"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/prf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="440dp"
-                android:text="STUDENT NAME" />
+                android:layout_marginTop="450dp"
+                android:text="Professor name: "
+                android:textColor="@color/black"
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/professor_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="460dp"
-                android:text="PROFESSOR NAME" />
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="450dp"
+                android:text="PROFESSOR NAME"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
         </com.github.barteksc.pdfviewer.PDFView>
     </RelativeLayout>
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/textView4"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginBottom="8dp"-->
-    <!--        android:text="Draw your signature and press GRANT in order to send the recommendation letter or just press GRANT if you don't want to sign the document"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/grant"-->
-    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+    <Button
+        android:id="@+id/grant"
+        android:layout_width="212dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#3C6E71"
+        android:text="grant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/professorName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/dateEdit" />
+
+    <EditText
+        android:id="@+id/professorName"
+        android:layout_width="105dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="professorName"
+        android:inputType="textPersonName"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/grant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.663"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signpdf"
+        app:layout_constraintVertical_bias="0.863" />
 
     <EditText
         android:id="@+id/dateEdit"
-        android:layout_width="94dp"
+        android:layout_width="105dp"
         android:layout_height="42dp"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="date"
         android:inputType="date"
+        android:textSize="13dp"
         app:layout_constraintBottom_toTopOf="@+id/grant"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signpdf"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/professorName"
-        android:layout_width="94dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="professorName"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/grant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.438"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signpdf"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/studentName"
-        android:layout_width="94dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="studentName"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/grant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.785"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signpdf"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/grant"
-        android:layout_width="match_parent"
-        android:layout_height="49dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#3C6E71"
-        android:text="grant"
-        app:layout_constraintTop_toBottomOf="@+id/dateEdit"
-        tools:layout_editor_absoluteX="-2dp" />
+        app:layout_constraintVertical_bias="0.873" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

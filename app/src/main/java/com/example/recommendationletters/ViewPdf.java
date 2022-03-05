@@ -42,7 +42,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ViewPdf extends AppCompatActivity {
-    String urls, registration_nr;
+    String urls, registration_nr, name;
     PDFView pdfView;
     ProgressDialog dialog;
     Button grant;
@@ -58,10 +58,10 @@ public class ViewPdf extends AppCompatActivity {
         grant = findViewById(R.id.grant);
         date = findViewById(R.id.dateEdit);
         profName = findViewById(R.id.professorName);
-        stdName = findViewById(R.id.studentName);
+        // stdName = findViewById(R.id.studentName);
         dateText = findViewById(R.id.date);
-        profNameText = findViewById(R.id.student_name);
-        stdNameText = findViewById(R.id.professor_name);
+        stdNameText = findViewById(R.id.student_name);
+        profNameText = findViewById(R.id.professor_name);
 
         RelativeLayout parent = (RelativeLayout) findViewById(R.id.signpdf);
         MyDrawView myDrawView = new MyDrawView(this);
@@ -81,7 +81,8 @@ public class ViewPdf extends AppCompatActivity {
         // get the url of the pdf
         urls = getIntent().getStringExtra("url");
         registration_nr = getIntent().getStringExtra("number");
-        Log.e("ViewPdf", registration_nr);
+        name = getIntent().getStringExtra("name");
+        stdNameText.setText(name);
         new RetrievePdfStream().execute(urls);
 
         grant.setOnClickListener(new View.OnClickListener() {
@@ -90,11 +91,11 @@ public class ViewPdf extends AppCompatActivity {
                 // set details in the pdf document
                 String dateInput = date.getText().toString();
                 String professor_name = profName.getText().toString();
-                String student_name = stdName.getText().toString();
+                // String student_name = stdName.getText().toString();
 
                 dateText.setText(dateInput);
                 profNameText.setText(professor_name);
-                stdNameText.setText(student_name);
+                // stdNameText.setText(student_name);
 
                 parent.setDrawingCacheEnabled(true);
                 Bitmap bmp = parent.getDrawingCache();

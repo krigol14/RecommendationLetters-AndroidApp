@@ -12,4 +12,10 @@
     <string name="conf_passwd">Confirm password</string>
     <string name="reg_signup">SIGN UP</string>
     <string name="students">Students</string>
+    <string name="spinner">dropDownMenuExample</string>
+    <string-array name="options">
+        <item>grades 6-8</item>
+        <item>grades 8-9</item>
+        <item>grades 9-10</item>
+    </string-array>
 </resources>
