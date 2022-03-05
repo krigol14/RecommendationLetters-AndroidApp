@@ -34,13 +34,13 @@ public class Requirements extends AppCompatActivity implements LocationListener 
         actionBar.setBackgroundDrawable(colorDrawable);
     }
 
+    // redirect to activity with map showing current location
     public void show_location(View view) {
         startActivity(new Intent(this, MapsActivity.class));
     }
 
-    public void display_luminance(View view) {
-        startActivity(new Intent(this, LuminanceActivity.class));
-    }
+    // redirect to activity displaying the luminance change
+    public void display_luminance(View view) {startActivity(new Intent(this, LuminanceActivity.class));}
 
     @Override
     public void onLocationChanged(@NonNull Location location) {}

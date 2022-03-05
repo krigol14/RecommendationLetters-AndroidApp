@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#edf2f4"
     tools:context=".MainActivity">
 
     <TextView
@@ -61,16 +61,17 @@
         android:id="@+id/requirements"
         android:layout_width="143dp"
         android:layout_height="40dp"
-        android:backgroundTint="#3C6E71"
+        android:background="@android:color/transparent"
         android:onClick="requirements"
         android:text="requirements"
+        android:textColor="#3C6E71"
         android:textSize="13sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_button"
-        app:layout_constraintVertical_bias="0.923" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView3"

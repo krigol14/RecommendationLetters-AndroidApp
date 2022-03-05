@@ -3,7 +3,6 @@ package com.example.recommendationletters;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,6 +36,7 @@ public class Register extends AppCompatActivity {
         confirm_password = findViewById(R.id.confirm_password);
     }
 
+    // registration function
     public void signUp(View view)
     {
         String passwd = register_password.getText().toString();
@@ -48,14 +47,13 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful() && (passwd.equals(confpasswd))){
-                            Toast.makeText(getApplicationContext(), "REGISTERED SUCCESSFULLY", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Registered successfully!", Toast.LENGTH_SHORT).show();
 
                             // redirect user to the login page in order to log in with his newly created credentials
-                            Intent intent = new Intent(Register.this, MainActivity.class);
-                            startActivity(intent);
+                            startActivity(new Intent(Register.this, MainActivity.class));
                         }
                         else {
-                            Toast.makeText(getApplicationContext(), "REGISTRATION ERROR", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Registration error!\n" + task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

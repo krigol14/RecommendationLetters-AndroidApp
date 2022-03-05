@@ -6,7 +6,8 @@
     app:cardCornerRadius="3dp"
     app:cardElevation="3dp"
     app:contentPadding="5dp"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:background="#edf2f4">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,33 +39,52 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginRight="200dp"
-            android:text="Registration Number: "
+            android:text="Registration number: "
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/average"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="75dp"
+            android:layout_marginLeft="165dp"
             android:layout_marginTop="65dp"
             android:text="total_average"
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/average_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
-            android:layout_marginRight="320dp"
-            android:text="Average: "
+            android:text="Grades average: "
             android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/lesson_names"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="105dp"
+            android:text="LESSON NAME"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/grades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="105dp"
+            android:text="GRADE"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/lesson1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="105dp"
+            android:layout_marginTop="130dp"
             android:text="lesson1"
             android:textSize="17sp" />
 
@@ -73,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="105dp"
+            android:layout_marginTop="130dp"
             android:text="grade1"
             android:textSize="17sp" />
 
@@ -81,7 +101,7 @@
             android:id="@+id/lesson2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="155dp"
             android:text="lesson2"
             android:textSize="17sp" />
 
@@ -90,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="155dp"
             android:text="grade2"
             android:textSize="17sp" />
 
@@ -98,7 +118,7 @@
             android:id="@+id/lesson3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="155dp"
+            android:layout_marginTop="180dp"
             android:text="lesson3"
             android:textSize="17sp" />
 
@@ -107,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="155dp"
+            android:layout_marginTop="180dp"
             android:text="grade3"
             android:textSize="17sp" />
 
@@ -115,7 +135,7 @@
             android:id="@+id/lesson4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="205dp"
             android:text="lesson4"
             android:textSize="17sp" />
 
@@ -124,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="205dp"
             android:text="grade4"
             android:textSize="17sp" />
 
@@ -132,7 +152,7 @@
             android:id="@+id/lesson5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="205dp"
+            android:layout_marginTop="230dp"
             android:text="lesson5"
             android:textSize="17sp" />
 
@@ -141,7 +161,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="205dp"
+            android:layout_marginTop="230dp"
             android:text="grade5"
             android:textSize="17sp" />
 
@@ -149,7 +169,7 @@
             android:id="@+id/lesson6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="230dp"
+            android:layout_marginTop="255dp"
             android:text="lesson6"
             android:textSize="17sp" />
 
@@ -158,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="230dp"
+            android:layout_marginTop="255dp"
             android:text="grade6"
             android:textSize="17sp" />
 
@@ -166,7 +186,7 @@
             android:id="@+id/lesson7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="255dp"
+            android:layout_marginTop="280dp"
             android:text="lesson7"
             android:textSize="17sp" />
 
@@ -175,7 +195,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="255dp"
+            android:layout_marginTop="280dp"
             android:text="grade7"
             android:textSize="17sp" />
 
@@ -183,7 +203,7 @@
             android:id="@+id/lesson8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="305dp"
             android:text="lesson8"
             android:textSize="17sp" />
 
@@ -192,7 +212,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="305dp"
             android:text="grade8"
             android:textSize="17sp" />
 
@@ -200,7 +220,7 @@
             android:id="@+id/lesson9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="305dp"
+            android:layout_marginTop="330dp"
             android:text="lesson9"
             android:textSize="17sp" />
 
@@ -209,7 +229,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="305dp"
+            android:layout_marginTop="330dp"
             android:text="grade9"
             android:textSize="17sp" />
 
@@ -217,7 +237,7 @@
             android:id="@+id/lesson10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="330dp"
+            android:layout_marginTop="355dp"
             android:text="lesson10"
             android:textSize="17sp" />
 
@@ -226,19 +246,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="330dp"
+            android:layout_marginTop="355dp"
             android:text="grade10"
             android:textSize="17sp" />
 
         <Button
             android:id="@+id/grantRecLetter"
-            android:layout_width="184dp"
-            android:layout_height="78dp"
-            android:layout_marginTop="380dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lesson10"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="155dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginBottom="50dp"
             android:backgroundTint="#3C6E71"
             android:text="GRANT RECOMMENDATION LETTER"
             app:layout_constraintStart_toStartOf="parent" />
 
     </RelativeLayout>
-
 </androidx.cardview.widget.CardView>

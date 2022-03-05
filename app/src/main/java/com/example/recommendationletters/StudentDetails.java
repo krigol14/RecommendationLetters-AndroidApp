@@ -3,31 +3,20 @@ package com.example.recommendationletters;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +50,7 @@ public class StudentDetails extends AppCompatActivity {
         String name = details.getStringExtra("full_name");
         String registration_nr = details.getStringExtra("number");
 
+        // pass student's data to the RecommendationLetterPrototypes activity and afterwards start it when button GRANT is pressed
         grant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,10 +61,11 @@ public class StudentDetails extends AppCompatActivity {
             }
         });
 
-        // display the student's details
+        // set the student's details to the corresponding textViews
         d_name.setText(name);
         d_reg.setText(registration_nr);
 
+        // arrays and lists used for firebase actions
         int[] lessons_textViews = {R.id.lesson1, R.id.lesson2, R.id.lesson3, R.id.lesson4, R.id.lesson5, R.id.lesson6, R.id.lesson7, R.id.lesson8, R.id.lesson9, R.id.lesson10};
         int[] grades_textViews = {R.id.grade1, R.id.grade2, R.id.grade3, R.id.grade4, R.id.grade5, R.id.grade6, R.id.grade7, R.id.grade8, R.id.grade9, R.id.grade10};
         List<String> lesson_names = new ArrayList<>();
@@ -86,7 +77,7 @@ public class StudentDetails extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dsp : snapshot.getChildren()){
-                    // retrieve lesson names
+                    // retrieve lesson names and add them to their list
                     String lesson_name = String.valueOf(dsp.getKey());
                     lesson_names.add(lesson_name);
                 }
@@ -119,11 +110,6 @@ public class StudentDetails extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
-    }
-
-    public void showPrototypes(View view) {
-        // redirect professor to the activity which displays some recommendation letter prototypes
-        startActivity(new Intent(StudentDetails.this, RecommendationLetterPrototypes.class));
     }
 
     // when the user presses the back button redirect to the students list activity

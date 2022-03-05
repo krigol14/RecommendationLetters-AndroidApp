@@ -15,8 +15,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -28,43 +26,44 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        login = findViewById(R.id.login_button);
-
         // change the action bar's color
         ActionBar actionBar = getSupportActionBar();
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#284b63"));
         assert actionBar != null;
         actionBar.setBackgroundDrawable(colorDrawable);
+
+        mAuth = FirebaseAuth.getInstance();
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.login_button);
     }
 
-    // function for user's login
+    // function for professor's login
     public void login(View view){
         mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "LOGIN SUCCESSFUL", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "You have successfully logged in!", Toast.LENGTH_LONG).show();
                     // redirect professor to the activity where he can see the list of available students
-                    Intent intent = new Intent(MainActivity.this, Students.class);
-                    startActivity(intent);
+                    startActivity(new Intent(MainActivity.this, Students.class));
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "LOGIN FAILED\n" + task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                    // show login error message
+                    Toast.makeText(getApplicationContext(), "Login failed!\n" + task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    // function for user's registration
+    // function for professor's registration
     public void signUp(View view) {
-        // if the user presses the button redirect him to the registration page
+        // redirect to the registration page
         startActivity(new Intent(MainActivity.this, Register.class));
     }
 
     public void requirements(View view) {
+        // redirect to activity where the requirements have been implemented
         startActivity(new Intent(MainActivity.this, Requirements.class));
     }
 }

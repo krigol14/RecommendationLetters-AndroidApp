@@ -1,8 +1,6 @@
 package com.example.recommendationletters;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-import java.io.ByteArrayOutputStream;
-
 public class StudentsAdapter extends FirebaseRecyclerAdapter<StudentData, StudentsAdapter.studentsViewHolder> {
-
     public StudentsAdapter(@NonNull FirebaseRecyclerOptions<StudentData> options) {
         super(options);
     }
@@ -32,12 +27,14 @@ public class StudentsAdapter extends FirebaseRecyclerAdapter<StudentData, Studen
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // initialize student details activity
                     Intent details = new Intent(view.getContext(), StudentDetails.class);
 
                     // pass the data of the specific student clicked to the new StudentDetails activity
                     details.putExtra("full_name", name.getText());
                     details.putExtra("number", number.getText());
 
+                    // redirect to the next activity
                     view.getContext().startActivity(details);
                 }
             });
