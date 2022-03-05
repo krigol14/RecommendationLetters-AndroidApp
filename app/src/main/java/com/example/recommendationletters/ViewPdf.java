@@ -47,7 +47,7 @@ public class ViewPdf extends AppCompatActivity {
     ProgressDialog dialog;
     Button grant;
     DatabaseReference database;
-    EditText date, profName, stdName;
+    EditText date, profName;
     TextView dateText, profNameText, stdNameText;
 
     @Override
@@ -58,7 +58,6 @@ public class ViewPdf extends AppCompatActivity {
         grant = findViewById(R.id.grant);
         date = findViewById(R.id.dateEdit);
         profName = findViewById(R.id.professorName);
-        // stdName = findViewById(R.id.studentName);
         dateText = findViewById(R.id.date);
         stdNameText = findViewById(R.id.student_name);
         profNameText = findViewById(R.id.professor_name);

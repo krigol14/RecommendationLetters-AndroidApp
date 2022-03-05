@@ -46,6 +46,7 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
         setContentView(R.layout.activity_recommendation_letter_prototypes);
         choose = findViewById(R.id.choose);
         spinner = findViewById(R.id.spinner);
+        pdfView = findViewById(R.id.preview);
 
         // change the action bar's color
         ActionBar actionBar = getSupportActionBar();
@@ -180,7 +181,7 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
         // load the pdf file and dismiss the dialog box
         protected void onPostExecute(InputStream inputStream) {
             pdfView.fromStream(inputStream).load();
-            dialog.dismiss();
+            // dialog.dismiss();
         }
     }
 }
