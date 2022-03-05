@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -131,6 +132,11 @@ public class ViewPdf extends AppCompatActivity {
                         database.child(database.push().getKey()).setValue(pdf_url);
                     }
                 });
+
+                // after professor grants recommendation letter, show message and redirect him to the list of students
+                Toast.makeText(ViewPdf.this, "Recommendation letter granted!", Toast.LENGTH_SHORT).show();
+                Intent redirect = new Intent(ViewPdf.this, Students.class);
+                startActivity(redirect);
             }
         });
     }
