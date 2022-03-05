@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,14 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,15 +34,11 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
     Button choose;
     Spinner spinner;
     PDFView pdfView;
-    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendation_letter_prototypes);
-        choose = findViewById(R.id.choose);
-        spinner = findViewById(R.id.spinner);
-        pdfView = findViewById(R.id.preview);
 
         // change the action bar's color
         ActionBar actionBar = getSupportActionBar();
@@ -54,17 +46,24 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setBackgroundDrawable(colorDrawable);
 
+        choose = findViewById(R.id.choose);
+        spinner = findViewById(R.id.spinner);
+        pdfView = findViewById(R.id.preview);
+
+        // retrieve student's details from the previous activity
         Intent prototypes = getIntent();
         String registration_nr = prototypes.getStringExtra("number");
         String name = prototypes.getStringExtra("name");
         new RetrievePdfStream().execute("https://firebasestorage.googleapis.com/v0/b/recommendation-letters-app.appspot.com/o/recLetter6_8.pdf?alt=media&token=6d546c2c-9d17-43b8-aef0-1f506eb4c5a0");
 
+        // configure spinner with options
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // display the corresponding recommendation letter using its url in realtime database
                 switch(i) {
                     case 0:
                         new RetrievePdfStream().execute("https://firebasestorage.googleapis.com/v0/b/recommendation-letters-app.appspot.com/o/recLetter6_8.pdf?alt=media&token=6d546c2c-9d17-43b8-aef0-1f506eb4c5a0");
@@ -81,24 +80,26 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
+        // based on which recommendation letter has been chosen, call getUrl in order to redirect to new activity where
+        // signature and details can be added
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // check which letter has been chosen
                 String selected_option = spinner.getSelectedItem().toString();
 
-                switch(selected_option){
-                    case "grades 6-8":
+                // call getUrl with the corresponding arguments based on the user's selection
+                switch(selected_option) {
+                    case "Prototype for grades 6-8":
                         getUrl("rec6_8", registration_nr, name);
                         break;
-                    case "grades 8-9":
+                    case "Prototype for grades 8-9":
                         getUrl("rec8_9", registration_nr, name);
                         break;
-                    case "grades 9-10":
+                    case "Prototype for grades 9-10":
                         getUrl("rec9_10", registration_nr, name);
                         break;
                 }
@@ -106,13 +107,13 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
         });
     }
 
+    // getUrl retrieves the recommendation letter's url from realtime database and then uses it in order to call alertDialog
     public void getUrl(String childName, String registration_nr, String name) {
         // instantiate firebase reference for the specific child
         database = FirebaseDatabase.getInstance().getReference().child("RecommendationLetters").child(childName);
         database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // snapshot.getValue(String.class) --> the url of the pdf saved in realtime database
                 String pdf_url = snapshot.getValue(String.class);
                 alertDialog(pdf_url, registration_nr, name);
             }
@@ -124,7 +125,7 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
         });
     }
 
-    // function which builds an alert dialog with the options the professor has after choosing the specific pdf
+    // function which builds an alert dialog with the options the professor has after choosing the specific recommendation letter
     public void alertDialog(String pdf_url, String registration_nr, String name) {
         // build alert dialog
         CharSequence options[] = new CharSequence[]{
@@ -138,13 +139,16 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // download the pdf
+                // download
                 if (which == 0) {
+                    // after choosing this option, the pdf gets downloaded in the phone's local storage
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(pdf_url));
                     startActivity(intent);
                 }
-                // view the pdf
+                // view
                 if (which == 1) {
+                    // choosing this option the user gets redirected to a new activity where he can sign, as well as add details to the letter
+                    // create new intent, passing details needed and start it
                     Intent intent = new Intent(RecommendationLetterPrototypes.this, ViewPdf.class);
                     intent.putExtra("url", pdf_url);
                     intent.putExtra("number", registration_nr);
@@ -178,10 +182,9 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
         }
 
         @Override
-        // load the pdf file and dismiss the dialog box
+        // load the pdf file
         protected void onPostExecute(InputStream inputStream) {
             pdfView.fromStream(inputStream).load();
-            // dialog.dismiss();
         }
     }
 }

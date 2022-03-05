@@ -14,8 +14,8 @@
     <string name="students">Students</string>
     <string name="spinner">dropDownMenuExample</string>
     <string-array name="options">
-        <item>grades 6-8</item>
-        <item>grades 8-9</item>
-        <item>grades 9-10</item>
+        <item>Prototype for grades 6-8</item>
+        <item>Prototype for grades 8-9</item>
+        <item>Prototype for grades 9-10</item>
     </string-array>
 </resources>

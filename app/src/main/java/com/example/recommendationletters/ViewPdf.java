@@ -1,30 +1,23 @@
 package com.example.recommendationletters;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.github.barteksc.pdfviewer.PDFView;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -46,15 +38,26 @@ public class ViewPdf extends AppCompatActivity {
     String urls, registration_nr, name;
     PDFView pdfView;
     ProgressDialog dialog;
-    Button grant;
     DatabaseReference database;
     EditText date, profName;
     TextView dateText, profNameText, stdNameText;
+    Button grant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pdf);
+
+        // change the action bar's color
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#284b63"));
+        assert actionBar != null;
+        actionBar.setBackgroundDrawable(colorDrawable);
+
+        RelativeLayout parent = (RelativeLayout) findViewById(R.id.signpdf);
+        MyDrawView myDrawView = new MyDrawView(this);
+        parent.addView(myDrawView);
+
         pdfView = findViewById(R.id.abc);
         grant = findViewById(R.id.grant);
         date = findViewById(R.id.dateEdit);
@@ -63,45 +66,34 @@ public class ViewPdf extends AppCompatActivity {
         stdNameText = findViewById(R.id.student_name);
         profNameText = findViewById(R.id.professor_name);
 
-        RelativeLayout parent = (RelativeLayout) findViewById(R.id.signpdf);
-        MyDrawView myDrawView = new MyDrawView(this);
-        parent.addView(myDrawView);
-
-        // change the action bar's color
-        ActionBar actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#284b63"));
-        assert actionBar != null;
-        actionBar.setBackgroundDrawable(colorDrawable);
-
         // show progress while loading the pdf file
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading...");
         dialog.show();
 
-        // get the url of the pdf
+        // get the url of the pdf as well as student details from the previous activity
         urls = getIntent().getStringExtra("url");
         registration_nr = getIntent().getStringExtra("number");
         name = getIntent().getStringExtra("name");
         stdNameText.setText(name);
+        // display the specific pdf file using its url retrieved
         new RetrievePdfStream().execute(urls);
 
         grant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // set details in the pdf document
-                String dateInput = date.getText().toString();
-                String professor_name = profName.getText().toString();
-                // String student_name = stdName.getText().toString();
+                // set the user input in the corresponding fields in the pdf document
+                dateText.setText(date.getText().toString());
+                profNameText.setText(profName.getText().toString());
 
-                dateText.setText(dateInput);
-                profNameText.setText(professor_name);
-                // stdNameText.setText(student_name);
-
+                // use cache in order to edit the pdf file (signature, details)
                 parent.setDrawingCacheEnabled(true);
                 Bitmap bmp = parent.getDrawingCache();
 
                 // save the signature in .png format in Device File Explorer data/data/com.example.recommendationLetters/files/signature.png
+                // so that it can be used later
                 try {
+                    // convert into png file
                     FileOutputStream fos = openFileOutput("signature.png", Context.MODE_PRIVATE);
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
                     bmp.compress(Bitmap.CompressFormat.PNG, 100 , bos);
@@ -114,12 +106,13 @@ public class ViewPdf extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                // push the saved pdf with its signature in firebase storage
+                // push the saved file in png format with its signature and details in firebase storage
                 StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("granted_recLetters");
                 Uri file = Uri.fromFile(new File("data/data/com.example.recommendationletters/files/signature.png"));
                 UploadTask uploadTask = storageReference.child("recLetter" + System.currentTimeMillis() + ".png").putFile(file);
 
-                // push the url of the pdf in realtime database
+                // push the url of the final document in realtime database
+                // get its url from firebase storage
                 database = FirebaseDatabase.getInstance().getReference().child("Students").child(registration_nr).child("RecLetters");
                 uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -128,7 +121,9 @@ public class ViewPdf extends AppCompatActivity {
                         while (!uriTask.isComplete());
                         Uri uri = uriTask.getResult();
 
+                        // pdf_url is the url of the document saved in firebase storage
                         String pdf_url  = uri.toString();
+                        // push in the specific student's recommendation letters branch
                         database.child(database.push().getKey()).setValue(pdf_url);
                     }
                 });
