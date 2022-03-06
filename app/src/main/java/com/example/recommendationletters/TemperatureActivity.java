@@ -12,15 +12,15 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class LuminanceActivity extends AppCompatActivity implements SensorEventListener {
-    private TextView luminance;
+public class TemperatureActivity extends AppCompatActivity implements SensorEventListener {
+    private TextView temperature;
     private SensorManager sensorManager;
     Sensor sensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_luminance);
+        setContentView(R.layout.activity_temperature);
 
         // change the action bar's color
         ActionBar actionBar = getSupportActionBar();
@@ -28,9 +28,9 @@ public class LuminanceActivity extends AppCompatActivity implements SensorEventL
         assert actionBar != null;
         actionBar.setBackgroundDrawable(colorDrawable);
 
-        luminance = findViewById(R.id.luminance);
+        temperature = findViewById(R.id.temperature);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
     }
 
     protected void onPause() {
@@ -45,8 +45,8 @@ public class LuminanceActivity extends AppCompatActivity implements SensorEventL
 
     // function which detects changes in luminance and displays them in a textView
     public void onSensorChanged(SensorEvent event) {
-        if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
-            luminance.setText("" + event.values[0] + " lx");
+        if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
+            temperature.setText("" + event.values[0] + " °C");
         }
     }
 

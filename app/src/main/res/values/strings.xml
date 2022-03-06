@@ -22,11 +22,12 @@
     <string name="lesson_name">LESSON NAME</string>
     <string name="grade">GRADE</string>
     <string name="grant_letter">GRANT RECOMMENDATION LETTER</string>
-
     <string name="date">Date:</string>
     <string name="professor_name">Professor name:</string>
     <string name="student_name">Student name:</string>
     <string name="grant">GRANT</string>
+    <string name="temperature">TEMPERATURE</string>
+    <string name="current_temperature">Current temperature:</string>
     <string name="spinner" translatable="false">dropDownMenuExample</string>
     <string-array name="options">
         <item>Prototype for grades 6-8</item>

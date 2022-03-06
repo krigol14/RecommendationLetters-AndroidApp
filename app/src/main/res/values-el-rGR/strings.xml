@@ -27,4 +27,6 @@
     <string name="professor_name">Όνομα καθηγητή:</string>
     <string name="student_name">Όνομα μαθητή:</string>
     <string name="grant">ΧΟΡΗΓΗΣΗ</string>
+    <string name="temperature">ΘΕΡΜΟΚΡΑΣΙΑ</string>
+    <string name="current_temperature">Τωρινή θερμοκρασία:</string>
 </resources>

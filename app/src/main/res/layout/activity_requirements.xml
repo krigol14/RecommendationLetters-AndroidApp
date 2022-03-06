@@ -8,33 +8,46 @@
     android:background="#edf2f4">
 
     <Button
+        android:id="@+id/temperature_sensor"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="#e5383b"
+        android:onClick="display_temperature"
+        android:text="@string/temperature"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/light_sensor"
+        app:layout_constraintVertical_bias="0.195" />
+
+    <Button
+        android:id="@+id/gps"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="84dp"
+        android:backgroundTint="#43aa8b"
+        android:onClick="show_location"
+        android:text="@string/gps"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/light_sensor"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_marginTop="25dp"
         android:backgroundTint="#f9c74f"
         android:onClick="display_luminance"
         android:text="@string/light_sensor"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gps"
-        app:layout_constraintVertical_bias="0.005" />
-
-    <Button
-        android:id="@+id/gps"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginTop="172dp"
-        android:backgroundTint="#43aa8b"
-        android:onClick="show_location"
-        android:text="@string/gps"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.109" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

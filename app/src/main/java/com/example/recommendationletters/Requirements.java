@@ -42,6 +42,9 @@ public class Requirements extends AppCompatActivity implements LocationListener 
     // redirect to activity displaying the luminance change
     public void display_luminance(View view) {startActivity(new Intent(this, LuminanceActivity.class));}
 
+    // redirect to activity displaying the temperature
+    public void display_temperature(View view) {startActivity(new Intent(this, TemperatureActivity.class));}
+
     @Override
     public void onLocationChanged(@NonNull Location location) {}
 }
