@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Συστατικές Επιστολές</string>
+    <string name="header">Σελίδα σύνδεσης</string>
+    <string name="login">ΣΥΝΔΕΣΗ</string>
+    <string name="sign_up">ΕΓΓΡΑΦΗ</string>
+    <string name="not_registered">Δεν έχετε εγγραφεί;</string>
+    <string name="e_mail">Ηλεκτονικό ταχυδρομείο</string>
+    <string name="password">Κωδικός</string>
+    <string name="registration_page">Σελίδα εγγραφής</string>
+    <string name="reg_email">E-mail</string>
+    <string name="reg_passwd">Κωδικός</string>
+    <string name="conf_passwd">Επαλήθευση κωδικού</string>
+    <string name="reg_signup">ΕΓΓΡΑΦΗ</string>
+    <string name="students">Μαθητές</string>
+    <string name="requirements">ΑΠΑΙΤΟΥΜΕΝΑ</string>
+    <string name="luminance">Τωρινό επίπεδο φωτεινότητας:</string>
+    <string name="light_sensor">ΑΙΣΘΗΤΗΡΑΣ ΦΩΤΕΙΝΟΤΗΤΑΣ</string>
+    <string name="gps">ΓΕΩΕΝΤΟΠΙΣΜΟΣ</string>
+    <string name="choose">ΕΠΙΛΟΓΗ</string>
+    <string name="registration_nr">ΑΡΙΘΜΟΣ ΜΗΤΡΩΟΥ:</string>
+    <string name="grades_average">ΜΕΣΟΣ ΟΡΟΣ:</string>
+    <string name="lesson_name">ΟΝΟΜΑ ΜΑΘΗΜΑΤΟΣ</string>
+    <string name="grade">ΒΑΘΜΟΣ</string>
+    <string name="grant_letter">ΧΟΡΗΓΗΣΗ ΣΥΣΤΑΤΙΚΗΣ ΕΠΙΣΤΟΛΗΣ</string>
+    <string name="date">Ημερομηνία:</string>
+    <string name="professor_name">Όνομα καθηγητή:</string>
+    <string name="student_name">Όνομα μαθητή:</string>
+    <string name="grant">ΧΟΡΗΓΗΣΗ</string>
+</resources>

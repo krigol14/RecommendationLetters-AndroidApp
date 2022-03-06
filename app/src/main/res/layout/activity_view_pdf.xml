@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="420dp"
-                android:text="Date: "
+                android:text="@string/date"
                 android:textColor="@color/black"
                 android:textSize="10dp" />
 
@@ -35,7 +35,7 @@
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="80dp"
                 android:layout_marginTop="420dp"
                 android:text="DATE"
                 android:textColor="@color/black"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="435dp"
-                android:text="Student name: "
+                android:text="@string/student_name"
                 android:textColor="@color/black"
                 android:textSize="10dp" />
 
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="450dp"
-                android:text="Professor name: "
+                android:text="@string/professor_name"
                 android:textColor="@color/black"
                 android:textSize="10dp" />
 
@@ -89,7 +89,7 @@
         android:layout_height="43dp"
         android:layout_marginBottom="40dp"
         android:backgroundTint="#3C6E71"
-        android:text="grant"
+        android:text="@string/grant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/professorName"
         app:layout_constraintHorizontal_bias="1.0"
@@ -101,7 +101,7 @@
         android:layout_height="41dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="professorName"
+        android:hint="Professor name"
         android:inputType="textPersonName"
         android:textSize="13dp"
         app:layout_constraintBottom_toTopOf="@+id/grant"
@@ -117,7 +117,7 @@
         android:layout_height="42dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="date"
+        android:hint="Date"
         android:inputType="date"
         android:textSize="13dp"
         app:layout_constraintBottom_toTopOf="@+id/grant"

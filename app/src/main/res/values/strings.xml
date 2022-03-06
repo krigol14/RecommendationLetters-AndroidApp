@@ -12,7 +12,22 @@
     <string name="conf_passwd">Confirm password</string>
     <string name="reg_signup">SIGN UP</string>
     <string name="students">Students</string>
-    <string name="spinner">dropDownMenuExample</string>
+    <string name="requirements">Requirements</string>
+    <string name="luminance">Current luminance level:</string>
+    <string name="light_sensor">LIGHT SENSOR</string>
+    <string name="gps">GPS</string>
+    <string name="choose">CHOOSE</string>
+    <string name="registration_nr">REGISTRATION NUMBER:</string>
+    <string name="grades_average">GRADES AVERAGE:</string>
+    <string name="lesson_name">LESSON NAME</string>
+    <string name="grade">GRADE</string>
+    <string name="grant_letter">GRANT RECOMMENDATION LETTER</string>
+
+    <string name="date">Date:</string>
+    <string name="professor_name">Professor name:</string>
+    <string name="student_name">Student name:</string>
+    <string name="grant">GRANT</string>
+    <string name="spinner" translatable="false">dropDownMenuExample</string>
     <string-array name="options">
         <item>Prototype for grades 6-8</item>
         <item>Prototype for grades 8-9</item>
