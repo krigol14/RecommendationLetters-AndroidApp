@@ -130,7 +130,7 @@ public class RecommendationLetterPrototypes extends AppCompatActivity {
         // build alert dialog
         CharSequence options[] = new CharSequence[]{
                 "Download",
-                "View",
+                "Sing, add details and grant",
                 "Cancel"
         };
 
