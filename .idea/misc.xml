@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_language_24.xml" value="0.2075" />
+        <entry key="app/src/main/res/drawable/ic_england.xml" value="0.2075" />
+        <entry key="app/src/main/res/drawable/ic_greece.xml" value="0.2075" />
         <entry key="app/src/main/res/layout/activity_luminance.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.2760416666666667" />
@@ -13,7 +16,9 @@
         <entry key="app/src/main/res/layout/activity_student_details.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/layout/activity_students.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_view_pdf.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/menu_main.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/layout/student.xml" value="0.29010416666666666" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.29010416666666666" />
       </map>
     </option>
   </component>

@@ -4,9 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,10 +21,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText email, password;
     Button login;
+    Locale myLocale;
+    String currentLang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,5 +74,35 @@ public class MainActivity extends AppCompatActivity {
     public void requirements(View view) {
         // redirect to activity where the requirements have been implemented
         startActivity(new Intent(MainActivity.this, Requirements.class));
+    }
+
+    // helper function for the language change
+    public void setLocale(String localeName) {
+        myLocale = new Locale(localeName);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Intent refresh = new Intent(this, MainActivity.class);
+        refresh.putExtra(currentLang, localeName);
+        startActivity(refresh);
+    }
+
+    // the following code is used for the menu bar of the application
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.greek) {setLocale("el");}
+        if (id == R.id.english) {setLocale("en");}
+
+        return super.onOptionsItemSelected(item);
     }
 }
