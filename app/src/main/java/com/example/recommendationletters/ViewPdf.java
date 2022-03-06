@@ -125,6 +125,10 @@ public class ViewPdf extends AppCompatActivity {
                         String pdf_url  = uri.toString();
                         // push in the specific student's recommendation letters branch
                         database.child(database.push().getKey()).setValue(pdf_url);
+
+                        // download the final document in the professor's phone
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(pdf_url));
+                        startActivity(intent);
                     }
                 });
 
